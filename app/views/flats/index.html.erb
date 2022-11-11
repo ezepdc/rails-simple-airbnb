@@ -1,0 +1,29 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Flats</h1>
+  <p><%= link_to "Add new flat", new_flat_path %></p>
+  <hr>
+
+  <div id="flats">
+    <% @flats.each do |flat| %>
+
+    <div class="flat-card">
+      <img src="<%= flat.picture_url %>" alt="">
+      <p><%= flat.name %></p>
+      <p><%= flat.address %></p>
+      <i class="fa-solid fa-people-line"><%= flat.number_of_guests %></i>
+      <i class="fa-solid fa-euro-sign"><%= flat.price_per_night %></i>
+
+      <p>
+        <%= link_to "More info", flat %>
+        <%= link_to "Edit", edit_flat_path(flat) %>
+        <%= link_to "Remove",
+        flat_path(flat),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      </p>
+    </div>
+    <% end %>
+  </div>
+
+</div>
